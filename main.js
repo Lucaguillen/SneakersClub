@@ -14,11 +14,11 @@ function registrarse (){
         let contrasenaIngreso = prompt("Ingrese su contraseña")
         if ((usuarioRegistro === usuarioIngreso) && (contrasenaRegistro === contrasenaIngreso)){
             alert ("Sesión iniciada con exito, puede continuar al sitio")
+            seleccionMarca()
         }else {
             alert("No se pudo iniciar la sesión, la contraseña o el usuario son incorrectos")
             ingresar()
         }
-        seleccionMarca()
     }
 }
 function seleccionMarca(){
