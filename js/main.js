@@ -14,7 +14,7 @@ const catalogo = [
     n550 = new Item ("550","NewBalance",8000,10), 
 ]
 const carrito = []
-/* function registrarse (){
+function registrarse (){
     alert("Para continuar se debe registrar")
     let usuarioRegistro = prompt("Defina su nombre de usuario")
     let contrasenaRegistro = prompt("Defina su contraseña")
@@ -30,13 +30,16 @@ const carrito = []
         let contrasenaIngreso = prompt("Ingrese su contraseña")
         if ((usuarioRegistro === usuarioIngreso) && (contrasenaRegistro === contrasenaIngreso)){
             alert ("Sesión iniciada con exito, puede continuar al sitio")
-            seleccionMarca()
+            menu()
         }else {
             alert("No se pudo iniciar la sesión, la contraseña o el usuario son incorrectos")
             ingresar()
         }
     }
-} */
+}
+function menu(){
+    pregunta= prompt("Como desea continuar? \n Comprar productos \n Mostrar ultimas oportunidades \n Mostrar carrito \n Mostrar importe total \n Salir")
+}
 function seleccionMarca(){
     let marca = prompt("Seleccione que marca busca \n Nike \n New Blance")
     if (marca.toLowerCase() === "nike"){
@@ -56,10 +59,10 @@ function marcaNike(){
             airforce.stock -= 1;
             airforce.chequeoStock()          
             carrito.push(airforce)
-            pregunta = prompt("Desea seguir comprando? \n Si \n No")
+            menu()
         }else{
             alert("No queda stock de este producto, lo sentimos")
-            pregunta = prompt("Desea seguir comprando? \n Si \n No")
+            menu()
         }
     }else if (item.toLowerCase() === "dunk"){ 
         if (dunk.stock >0){
@@ -67,10 +70,10 @@ function marcaNike(){
             dunk.stock -= 1;
             dunk.chequeoStock()          
             carrito.push(dunk)
-            pregunta = prompt("Desea seguir comprando? \n Si \n No")
+            menu()
         }else{
             alert("No queda stock de este producto, lo sentimos")
-            pregunta = prompt("Desea seguir comprando? \n Si \n No")
+            menu()
         }
     }else {
         alert ("Modelo incorrecto")
@@ -85,10 +88,10 @@ function marcaNewBalance(){
             n550.stock -= 1;
             n550.chequeoStock()          
             carrito.push(n550)
-            pregunta = prompt("Desea seguir comprando? \n Si \n No")
+            menu()
         }else{
             alert("No queda stock de este producto, lo sentimos")
-            pregunta = prompt("Desea seguir comprando? \n Si \n No")
+            menu()
         }
     }else if (item.toLowerCase() === "mr530"){ 
         if (mr530.stock >0){
@@ -96,10 +99,10 @@ function marcaNewBalance(){
             mr530.stock -= 1;
             mr530.chequeoStock()          
             carrito.push(mr530)
-            pregunta = prompt("Desea seguir comprando? \n Si \n No")
+            menu()
         }else{
             alert("No queda stock de este producto, lo sentimos")
-            pregunta = prompt("Desea seguir comprando? \n Si \n No")
+            menu()
         }
     }else {
         alert ("Modelo incorrecto")
@@ -112,6 +115,7 @@ function mostrarCarrito() {
       parrafo += (`Modelo: ${item.modelo} - Precio: $UY ${item.precio}\n`)
     })  
     alert(parrafo)
+    menu()
 }
 function mostrarUltimas(){
     const ultimasUnidades = catalogo.filter((item)=> item.stock <= 5)
@@ -120,22 +124,43 @@ function mostrarUltimas(){
         parrafo += (`Quedan solamente ${ultimas.stock} unidades del modelo ${ultimas.modelo} \n`)   
     }
     alert(parrafo)
-    pregunta = prompt("Desea seguir comprando? \n Si \n No")
+    menu()
 }
-
-
-
-let pregunta
-/* registrarse() */
-seleccionMarca()
-while (pregunta.toLowerCase() != "no"){
-    if(pregunta.toLowerCase() === "si"){
-        seleccionMarca ()
-    }else{
-        alert("Respuesta inválida. Por favor, ingrese 'si' o 'no'.")
-        pregunta = prompt("Desea seguir comprando? \n Si \n No")
+function mostrarTotal() {
+    const total = carrito.reduce((acc, elemento) => acc + elemento.precio, 0);
+    codigoDescuento(total)  
+}
+function codigoDescuento (total){
+    const codigo = prompt("Si conoces un codigo de descuento escribelo ahora, de lo contrario escriba: no")
+    if (codigo.toLowerCase() === descuento){
+        total /= 2
+        alert(`El importe total de tu compra es: $UY ${total}`);
+        menu()
+    }else if (codigo.toLowerCase() === "no"){
+        alert(`El importe total de tu compra es: $UY ${total}`);
+        menu()
+    }
+     else {
+        alert("Codigo incorrecto, intente nuevamente")
+        codigoDescuento(total)
     }
 }
-mostrarCarrito()
-mostrarUltimas()
+let pregunta
+let descuento = "lucaguillenmialumnofavorito"
+registrarse()
+while (pregunta.toLowerCase() != "salir"){
+    if(pregunta.toLowerCase() === "comprar productos"){
+        seleccionMarca ()
+    }else if(pregunta.toLowerCase() === "mostrar ultimas oportunidades" ){
+        mostrarUltimas()
+    }else if(pregunta.toLowerCase() === "mostrar carrito"){
+        mostrarCarrito()
+    }else if(pregunta.toLowerCase() === "mostrar importe total"){
+        mostrarTotal()
+    }
+    else{
+        alert("Respuesta inválida")
+        menu()
+    }
+}
 alert("Muchas Gracias por su compra!") 
