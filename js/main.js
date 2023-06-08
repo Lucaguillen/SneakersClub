@@ -147,7 +147,7 @@ function codigoDescuento (total){
 }
 let pregunta
 let descuento = "lucaguillenmialumnofavorito"
-registrarse()
+/* registrarse() */
 while (pregunta.toLowerCase() != "salir"){
     if(pregunta.toLowerCase() === "comprar productos"){
         seleccionMarca ()
@@ -163,4 +163,4 @@ while (pregunta.toLowerCase() != "salir"){
         menu()
     }
 }
-alert("Muchas Gracias por su compra!") 
+/* alert("Muchas Gracias por su compra!")  */
