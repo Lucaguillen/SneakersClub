@@ -54,7 +54,7 @@ card.innerHTML=
 <div class="detallesCard">
     <h2 class="tituloCard">${p.modelo}</h2>
     <p class="infoCard">Marca: ${p.marca}</p>
-    <p class="infoCard">Stock: ${p.stock}</p>
+    <p class="infoCard" id="stock">Stock: ${p.stock}</p>
     <p class="precioCard">$ ${p.precio}</p>
     <button class="addCarrito" onClick="carritoDom(${i})">Agregar al carrito</button>
 </div>
@@ -63,17 +63,30 @@ catalogoCaptura.appendChild(card)
 });
 /* GENERA EL CARRITO */
 const carritoCaptura = document.getElementById("carrito")
-const h2CarritoCaptura = document.getElementById("h2carrito")
+const totalesCaptura = document.getElementById("totales")
 const carritoDom = (i)=>{
     if (carrito.length === 0){
         carritoCaptura.className="carrito"
+        totalesCaptura.className="totales"
         addCarrito(i)
+        calcularTotal()
     }else{
         addCarrito(i)
+        calcularTotal()
     }
 }
+const calcularTotal = ()=>{
+    let total = 0
+    carrito.forEach((p)=>{
+        const precioTotal = p.precio * p.cantidad
+        total += precioTotal
+    })
+    totalesCaptura.innerHTML=`
+        <h2 class="titulo">Total: ${total} </h2>
+        <button class="comprarbtn">Comprar</button>`
+}
 /* FUNCION QUE AÑADE PRODUCTOS */
-function limpiarCarritoHTML(){
+const limpiarCarritoHTML =()=>{
     carritoCaptura.innerHTML=`<h2 class="titulo">Carrito</h2>`
 }
 const addCarrito = (i)=>{
@@ -86,13 +99,22 @@ const addCarrito = (i)=>{
         addProducto.stock -= 1
         carrito.push(addProducto)
         cardAlCarrito()    
+        actualizarStockHTML(i)
     }else if (addProducto.stock !=0){
         carrito[productoSelect].cantidad += 1
         carrito[productoSelect].stock -= 1   
+        cardAlCarrito()
+        actualizarStockHTML(i)
     }else{
         alert("producto sin stock")
     }   
 }
+const actualizarStockHTML = (i) => {
+    const stockCards = document.querySelectorAll('#stock');
+    const stockCard = stockCards[i];
+    stockCard.textContent = `Stock: ${catalogo[i].stock}`;
+  };
+  
 
 /* FUNCION QUE MANDA LA CARD AL CARRITO */
 const cardAlCarrito = ()=>{
@@ -107,8 +129,8 @@ const cardAlCarrito = ()=>{
         </div>
         <div class="detallesCard">
             <h2 class="tituloCard">${p.modelo}</h2>
-            <p class="infoCard">Marca: ${p.marca}</p>
             <p class="precioCard">$ ${p.precio}</p>
+            <p class="infoCard">Cantidad en el carrito: ${p.cantidad}</p>
             <button class="removeCarrito" >Eliminar del carrito</button>
         </div>
         `

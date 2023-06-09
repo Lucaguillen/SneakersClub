@@ -87,7 +87,7 @@
   width: 100%;
   padding: 10px;
   margin-top: 10px;
-  background-color: #3a1e1e;
+  background-color: #631010;
   color: #fff;
   border: none;
   border-radius: 4px;
@@ -96,5 +96,33 @@
   transition: background-color 0.5s ease;
 }
 .card .detallesCard .removeCarrito:hover {
-  background-color: #3b0707;
+  background-color: #8d0707;
+}
+
+.totales {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: auto;
+  gap: 2px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 50%;
+}
+.totales .titulo {
+  display: flex;
+}
+.totales .comprarbtn {
+  padding: 10px;
+  width: 100%;
+  background-color: #898989;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.5s ease;
+}
+.totales .comprarbtn:hover {
+  background-color: #8d0707;
 }/*# sourceMappingURL=main.css.map */
