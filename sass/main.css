@@ -125,4 +125,8 @@
 }
 .totales .comprarbtn:hover {
   background-color: #8d0707;
+}
+
+.esconder {
+  display: none;
 }/*# sourceMappingURL=main.css.map */

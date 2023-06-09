@@ -85,10 +85,15 @@ const calcularTotal = ()=>{
         <h2 class="titulo">Total: ${total} </h2>
         <button class="comprarbtn">Comprar</button>`
 }
-/* FUNCION QUE AÑADE PRODUCTOS */
-const limpiarCarritoHTML =()=>{
-    carritoCaptura.innerHTML=`<h2 class="titulo">Carrito</h2>`
+/* GUARDA CARRITO EN STORAGE */
+/* const carritoAStorage = (carrito)=>{
+    localStorage.setItem("carrito", JSON.stringify(carrito))
 }
+if (localStorage.getItem("carrito")){
+    carrito = JSON.parse(localStorage.getItem("carrito"))
+    cardAlCarrito()
+} */
+/* FUNCION QUE AÑADE PRODUCTOS */
 const addCarrito = (i)=>{
     const productoSelect = carrito.findIndex((e)=>{
         return e.id === catalogo[i].id
@@ -98,11 +103,13 @@ const addCarrito = (i)=>{
         addProducto.cantidad = 1
         addProducto.stock -= 1
         carrito.push(addProducto)
+        /* carritoAStorage() */
         cardAlCarrito()    
         actualizarStockHTML(i)
     }else if (addProducto.stock !=0){
         carrito[productoSelect].cantidad += 1
         carrito[productoSelect].stock -= 1   
+        /* carritoAStorage() */
         cardAlCarrito()
         actualizarStockHTML(i)
     }else{
@@ -110,13 +117,14 @@ const addCarrito = (i)=>{
     }   
 }
 const actualizarStockHTML = (i) => {
-    const stockCards = document.querySelectorAll('#stock');
-    const stockCard = stockCards[i];
+    const capturaStocks = document.querySelectorAll('#stock');
+    const stockCard = capturaStocks[i];
     stockCard.textContent = `Stock: ${catalogo[i].stock}`;
-  };
-  
-
+};
 /* FUNCION QUE MANDA LA CARD AL CARRITO */
+const limpiarCarritoHTML =()=>{
+    carritoCaptura.innerHTML=`<h2 class="titulo">Carrito</h2>`
+}
 const cardAlCarrito = ()=>{
     limpiarCarritoHTML()
     carrito.forEach((p,i)=>{
@@ -137,5 +145,6 @@ const cardAlCarrito = ()=>{
         carritoCaptura.appendChild(card) 
     });
 }
+
 
 
