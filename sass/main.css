@@ -127,6 +127,74 @@
   background-color: #8d0707;
 }
 
+.btnFinalizar {
+  padding: 10px;
+  width: 100%;
+  background: #898989 !important;
+  background-color: #898989;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.5s ease;
+}
+
+.btnFinalizar:hover {
+  background-color: #8d0707;
+}
+
+.addCarrito {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  background-color: #898989;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.5s ease;
+}
+
+.addCarrito:hover {
+  background-color: #363636;
+}
+
+.formulario {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.formContainer {
+  width: 77%;
+  padding: 20px;
+  background-color: #f2f2f2;
+  border-radius: 5px;
+}
+.formContainer .form {
+  margin-bottom: 15px;
+}
+.formContainer .formLabel {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 5px;
+}
+.formContainer .formInput {
+  padding: 10px;
+  width: 97%;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
 .esconder {
-  display: none;
+  display: none !important;
+}
+
+.block {
+  display: block !important;
 }/*# sourceMappingURL=main.css.map */
