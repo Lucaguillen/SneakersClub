@@ -23,4 +23,5 @@
     {"id":22,"modelo":"pagina3","marca":"nike","precio":7800,"stock":5,"imagen":"./img/airforce.png"},
     {"id":23,"modelo":"pagina3","marca":"NewBalance","precio":7700,"stock":10,"imagen":"./img/530.png"},
     {"id":24,"modelo":"pagina3","marca":"NewBalance","precio":8000,"stock":10,"imagen":"./img/550.png"}
+    
 ]
