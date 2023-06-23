@@ -1,76 +1,295 @@
 * {
-  margin: 0;
   padding: 0;
+  margin: 0;
 }
 
-#contenedor {
+body {
+  background-image: url("../img/bg.png");
+  font-size: 16px;
+}
+
+.containerNav {
+  position: sticky;
+  z-index: 1;
+  top: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: center;
+  padding: 0 1em;
+  margin-top: 3px;
+}
+.containerNav .logoNav {
+  color: rgb(255, 0, 0);
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 3rem;
   display: flex;
   justify-content: center;
-  gap: 2px;
+  align-items: center;
+  text-decoration: none;
 }
-#contenedor #catalogo {
-  display: grid;
-  grid-template-columns: auto auto;
-  grid-template-rows: 50px auto auto;
-  gap: 0.5em;
+.containerNav .menuNav {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+}
+.containerNav .menuNav .cartBtn {
+  display: none;
+}
+.containerNav .menuNav .open {
+  display: flex;
+}
+.containerNav .menuNav .menuLink {
+  color: white;
+  font-family: "Roboto Condensed", sans-serif;
+  font-size: 1rem;
+  text-decoration: none;
+  cursor: pointer;
+}
+.containerNav .menuNav .menuLink:not(:last-child) {
+  margin-right: 10px;
+}
+.containerNav .menuNav .menuLink:hover {
+  color: red;
+}
+.containerNav .searchNav {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+.containerNav .searchNav #inputSearchNav {
+  color: white;
+  font-family: "Roboto Condensed", sans-serif;
+  background: transparent;
+  border: 2px solid white;
+  border-radius: 3px;
+  width: 250px;
+  height: 24px;
+  outline: 0px;
+  padding: 0px 0px 0px 20px;
+}
+.containerNav .searchNav #inputSearchNav::-moz-placeholder {
+  color: white;
+  font-family: "Roboto Condensed", sans-serif;
+}
+.containerNav .searchNav #inputSearchNav::placeholder {
+  color: white;
+  font-family: "Roboto Condensed", sans-serif;
+}
+.containerNav .searchNav #inputSearchNav:focus {
+  border-color: red;
+}
+
+.scrollNav {
+  background-color: black;
+  color: black;
+}
+
+.jordanContainter {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 100vh;
+  margin-top: -63px;
+}
+.jordanContainter .jordan .jordanImg {
+  height: 500px;
+  width: auto;
+}
+.jordanContainter .jordanText {
+  max-width: 700px;
+  letter-spacing: -1px;
+  line-height: 1.1;
+  font-family: "Bebas Neue", sans-serif;
+  color: white;
+  font-size: 5rem;
+}
+
+.sectionProducts {
+  height: 100vh;
+  background: #f9f9f9;
+  display: flex;
   justify-content: center;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  width: 50%;
+  align-items: center;
 }
-#contenedor #catalogo .titulo {
-  grid-column: 1/3;
-  text-align: center;
-}
-#contenedor .carrito {
+.sectionProducts .productsContainer {
+  justify-items: center;
   display: grid;
-  grid-template-columns: auto auto;
-  grid-template-rows: 50px auto auto;
-  gap: 0.5em;
-  justify-content: center;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  width: 50%;
+  grid-template-rows: repeat(2, 1fr);
+  grid-template-columns: repeat(4, 1fr);
+  width: 1200px;
+  gap: 10px;
 }
-#contenedor .carrito .titulo {
-  grid-column: 1/3;
-  text-align: center;
+.sectionProducts .cart {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  width: 17.5em;
+  height: 93.3vh;
+  transform: translateX(100%);
+  transition: all 0.4s ease;
+  background-color: #898989;
+}
+.sectionProducts .cart .cardCart {
+  display: flex;
+  background-color: #ffffff;
+  margin-top: 3px;
+  width: 17em;
+  height: 4em;
+  border-radius: 4px;
+  padding: 0;
+  box-shadow: 5px 7px 4px rgba(0, 0, 0, 0.1);
+}
+.sectionProducts .cart .cardCart .imagenCard {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.sectionProducts .cart .cardCart .imagenCard img {
+  height: 50px;
+  width: auto;
+}
+.sectionProducts .cart .cardCart .detallesCard .infoCard {
+  font-family: "Roboto Condensed", sans-serif;
+  font-size: 14px;
+  color: #888;
+}
+.sectionProducts .cart .cardCart .detallesCard .tituloCard {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 18px;
+}
+.sectionProducts .cart .cardCart .detallesCard .precioCard {
+  font-family: "Roboto Condensed", sans-serif;
+  font-size: 14px;
+  color: #888;
+}
+.sectionProducts .cart .cardCart .btnProductCart {
+  margin-left: auto;
+}
+.sectionProducts .cart .cardCart .btnProductCart .removeCarrito {
+  width: 50px;
+  padding: 1px;
+  margin: 2px;
+  background-color: #631010;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: background-color 0.5s ease;
+}
+.sectionProducts .cart .cardCart .btnProductCart .removeCarrito:hover {
+  background-color: #ff0000;
+}
+.sectionProducts .cart .cardCart .btnProductCart .btnProductCart2 {
+  display: flex;
+  justify-content: center;
+  margin-top: auto;
+}
+.sectionProducts .cart .cardCart .btnProductCart .btnProductCart2 .removeCarrito2 {
+  margin: 1px;
+  width: 10px;
+  height: 14px;
+  background-color: #631010;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: background-color 0.5s ease;
+}
+.sectionProducts .cart .cardCart .btnProductCart .btnProductCart2 .removeCarrito2:hover {
+  background-color: #ff0000;
+}
+.sectionProducts .cart .infoCart {
+  position: fixed;
+  bottom: 0;
+  border-radius: 2px;
+  background-color: #ffffff;
+  width: 17em;
+  height: 3.5em;
+  margin-bottom: 3px;
+  padding: 2px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+.sectionProducts .cart .infoCart .infoCartText {
+  font-family: "Roboto Condensed", sans-serif;
+  font-size: 16px;
+  color: #000000;
+}
+.sectionProducts .cart .infoCart .infoCartBtn {
+  font-family: "Roboto Condensed", sans-serif;
+  background-color: #898989;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background-color 0.5s ease;
+}
+.sectionProducts .cart .infoCart .infoCartBtn:hover {
+  background-color: #363636;
+}
+.sectionProducts .open {
+  transform: translateX(0);
+}
+
+.pageSelectorContainer .pageSelectorR {
+  margin-left: 35px;
+}
+.pageSelectorContainer .pageSelectorR:hover {
+  fill: red;
+  cursor: pointer;
+}
+.pageSelectorContainer .pageSelectorL {
+  margin-right: 35px;
+}
+.pageSelectorContainer .pageSelectorL:hover {
+  fill: red;
+  cursor: pointer;
 }
 
 .card {
+  background-color: #ffffff;
   width: 17em;
-  height: 20em;
-  border: 1px solid #ccc;
+  height: 18em;
   border-radius: 4px;
   padding: 10px;
+  box-shadow: 5px 7px 4px rgba(0, 0, 0, 0.1);
 }
 .card .imagenCard {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 200px;
 }
 .card .imagenCard img {
   max-width: 100%;
-  max-height: 100%;
+  height: auto;
 }
 .card .detallesCard .infoCard {
+  font-family: "Roboto Condensed", sans-serif;
   font-size: 16px;
   color: #888;
 }
 .card .detallesCard .tituloCard {
+  font-family: "Bebas Neue", sans-serif;
   font-size: 18px;
   margin-bottom: 5px;
 }
 .card .detallesCard .precioCard {
+  font-family: "Roboto Condensed", sans-serif;
   font-size: 16px;
   color: #888;
 }
 .card .detallesCard .addCarrito {
+  font-family: "Roboto Condensed", sans-serif;
   display: block;
   width: 100%;
   padding: 10px;
-  margin-top: 10px;
   background-color: #898989;
   color: #fff;
   border: none;
@@ -99,102 +318,11 @@
   background-color: #8d0707;
 }
 
-.totales {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-left: auto;
-  gap: 2px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  width: 50%;
-}
-.totales .titulo {
-  display: flex;
-}
-.totales .comprarbtn {
-  padding: 10px;
-  width: 100%;
+.btn-personalizado {
+  font-family: "Roboto Condensed", sans-serif;
   background-color: #898989;
   color: #fff;
   border: none;
   border-radius: 4px;
   font-size: 16px;
-  cursor: pointer;
-  transition: background-color 0.5s ease;
-}
-.totales .comprarbtn:hover {
-  background-color: #8d0707;
-}
-
-.btnFinalizar {
-  padding: 10px;
-  width: 100%;
-  background: #898989 !important;
-  background-color: #898989;
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-  font-size: 16px;
-  cursor: pointer;
-  transition: background-color 0.5s ease;
-}
-
-.btnFinalizar:hover {
-  background-color: #8d0707;
-}
-
-.addCarrito {
-  display: block;
-  width: 100%;
-  padding: 10px;
-  margin-top: 10px;
-  background-color: #898989;
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-  font-size: 16px;
-  cursor: pointer;
-  transition: background-color 0.5s ease;
-}
-
-.addCarrito:hover {
-  background-color: #363636;
-}
-
-.formulario {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}
-
-.formContainer {
-  width: 77%;
-  padding: 20px;
-  background-color: #f2f2f2;
-  border-radius: 5px;
-}
-.formContainer .form {
-  margin-bottom: 15px;
-}
-.formContainer .formLabel {
-  font-weight: bold;
-  display: block;
-  margin-bottom: 5px;
-}
-.formContainer .formInput {
-  padding: 10px;
-  width: 97%;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-.esconder {
-  display: none !important;
-}
-
-.block {
-  display: block !important;
 }/*# sourceMappingURL=main.css.map */
