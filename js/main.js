@@ -18,7 +18,7 @@ let totalPages = 0
 let data = []
 let cart = []
 const fetchData = async () => {
-  const resp = await fetch("./json/data.json")
+  const resp = await fetch("../json/data.json")
   data = await resp.json()
   showCards()
 }
